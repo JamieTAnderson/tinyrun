@@ -1,7 +1,7 @@
 tinyrun
 =======
 
-A toy container runtime. Learning project.
+A toy container runtime.
 
 It runs a command in its own UTS, PID, and mount namespaces, chroots into
 ./rootfs, and mounts a fresh /proc. Inside, the command gets its own
