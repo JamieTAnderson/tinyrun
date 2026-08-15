@@ -1,1 +1,18 @@
+tinyrun
+=======
+
+A toy container runtime. Learning project.
+
+It runs a command in its own UTS, PID, and mount namespaces, chroots into
+./rootfs, and mounts a fresh /proc. Inside, the command gets its own
+hostname and a process table that starts at PID 1 and can't see the host.
+
+Namespaces, clone() flags, chroot and mount are Linux kernel features.
+This does not run on macOS. It compiles there, but fails at runtime.
+The workflow below is: build on the Mac, run in a Linux VM (Lima).
+
 GOOS=linux GOARCH=arm64 go build -o tinyrun .
+
+namespaces  -> own hostname / process table / mounts
+chroot      -> own filesystem root
+cgroups     -> resource limits
